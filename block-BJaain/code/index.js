@@ -1,15 +1,14 @@
-console.log(this.document === document); // Output
-
+console.log(this.document === document); // Output true
 // ------------
 
-console.log(this === window); //Output
+console.log(this === window); //Output true
 
 // ------------
 
 var myFunction = function () {
   console.log(this);
 };
-myFunction(); // Output
+myFunction(); // Output it will point to window object. Becuase, whenver we see this, we need to thin about types of bindding.It is default bibding, where there is nothing on the left of the function call , hence this, inside that particular function will point to window object
 
 // ------------
 
@@ -17,7 +16,7 @@ function f1() {
   'use strict';
   return this;
 }
-console.log(f1() === window); //Output
+console.log(f1() === window); //Output flase, Becuase first of all, will see what type of binding it is, it's default bin ding in which this points to window object. But, at the same time,  we have used strict mode, In strict mode, defualt binding is not included, hence it will return false, otherwise if we would have not used strict mode, it woild return true.
 
 // ------------
 
@@ -27,6 +26,8 @@ function foo() {
 }
 
 foo(); //Output ??
+// "Simple function call"
+// true
 
 // ------------
 
@@ -35,6 +36,8 @@ foo(); //Output ??
   console.log('Anonymous function invocation');
   console.log(this === window);
 })(); //Output
+// Anonymous function invocation
+//  true
 
 // ------------
 
@@ -42,7 +45,7 @@ var myObject = {};
 myObject.someMethod = function () {
   console.log(this);
 };
-myObject.someMethod(); //Value Of This
+myObject.someMethod(); //Value Of This - myObject
 
 // ------------
 
@@ -56,9 +59,9 @@ function Person(fn, ln) {
 }
 
 let person = new Person('John', 'Reed');
-person.displayName(); // Output
+person.displayName(); // Outpu Name: John Reedt
 let person2 = new Person('Paul', 'Adams');
-person2.displayName(); // Output
+person2.displayName(); // Output Name: Paul Adams
 
 // ------------
 
@@ -76,10 +79,10 @@ let user = {
   },
 };
 
-user.foo(); // Output
+user.foo(); // Output false
 let fun1 = user.foo1;
-fun1(); // Output ??
-user.foo1(); // Output ??
+fun1(); // Output ?? true
+user.foo1(); // Output ?? false
 
 // ------------
 
@@ -91,13 +94,13 @@ var obj = {
   },
 };
 
-obj.getX(); // Output ??
+obj.getX(); // Output ?? 81
 
 var retrieveX = obj.getX;
-retrieveX(); //Output ??
+retrieveX(); //Output ?? 9 
 
 var boundGetX = retrieveX.bind(obj);
-boundGetX(); // Output ??
+boundGetX(); // Output ?? 81
 
 // ------------
 
@@ -132,22 +135,22 @@ obj.getThis3 = obj.getThis.bind(obj);
 obj.getThis4 = obj.getThis2.bind(obj);
 
 // Output
-obj.getThis();
+obj.getThis();// window object
 
 // Output
-obj.getThis.call(a);
+obj.getThis.call(a); //window object
 
 // Output
-obj.getThis2();
+obj.getThis2(); // obj object
 
 // Output
-obj.getThis2.call(a);
+obj.getThis2.call(a); // a object
 
 // Output
-obj.getThis3();
+obj.getThis3(); // window obj
 
 // Output
-obj.getThis4();
+obj.getThis4(); // obj object
 
 // -------------
 
@@ -158,10 +161,10 @@ let person = {
   },
 };
 
-person.greet(); // output
+person.greet(); // output "hello Jay"
 
 let greet = person.greet;
-greet(); // output
+greet(); // output- hello
 
 // -------------
 
@@ -178,14 +181,14 @@ let person = {
     return this.name;
   },
 };
-console.log(person.details.print()); // output?
-console.log(person.print()); // output?
+console.log(person.details.print()); // output? "Jay Details"
+console.log(person.print()); // output? "Jay Person"
 
 let name1 = person.print;
 let name2 = person.details;
 
-console.log(name1()); // output?
-console.log(name2.print()); // output?
+console.log(name1()); // output? ""
+console.log(name2.print()); // output? "Jay details"
 
 // --------
 
@@ -199,7 +202,7 @@ let outerFn = function () {
   return innerFn;
 };
 
-outerFn()();
+outerFn()();// error - innerItem is not defined
 
 // -----------
 
@@ -224,8 +227,8 @@ let object = {
   },
 };
 
-object.double();
-object.doubleArrow();
+object.double();// [2,4,6] inside map this will be window
+object.doubleArrow(); // [2,4,6] inside map this wil be onject
 
 // --------------
 
@@ -238,7 +241,7 @@ function print() {
 }
 
 let printNameBob = print.bind(bobObj);
-console.log(printNameBob()); // output??
+console.log(printNameBob()); // output?? Bob
 
 // -------------------
 
@@ -257,7 +260,7 @@ let obj2 = {
 };
 
 let getSecondData = obj2.printSecondData.bind(obj1);
-console.log(getSecondData()); // Output and why ???
+console.log(getSecondData()); // Output and why ??? 2 because bind copies the function with the value of this inside it as obj1
 
 // --------------
 
@@ -268,7 +271,7 @@ const call = {
   },
 };
 
-call.says(); // output ???
+call.says(); // output ??? "Hey, mom just called"
 
 // -----------------
 
@@ -281,7 +284,7 @@ const call = {
 
 let newCall = call.says;
 
-newCall(); // output ???
+newCall(); // output ??? Hey, undefined just called.
 
 //  -----------------
 
@@ -299,4 +302,4 @@ const call = {
 
 let newCall = call.anotherCaller;
 
-newCall(); // output ??
+newCall(); // output ?? undefined called, too!
