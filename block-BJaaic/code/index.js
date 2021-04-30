@@ -1,21 +1,22 @@
 // prototypal pattern
 
-function animal(location,numberOfLegs){
+function createAnimal(location,numberOfLegs){
     let animal = Object.create(animalMethods);
     animal.location = location;
     animal.numberOfLegs = numberOfLegs;
     return animal;
 }
 
-function createDog(name,color){
-    let dog = Object.create(dogMethods);
+function createDog(location,numberOfLegs,name,color){
+    let dog = createAnimal(location,numberOfLegs);
+    Object.setPrototypeOf(dog,dogMethods);
     dog.name = name;
     dog.color = color;
     return dog;
 }
-function createCat(name,colorOfEyes){
-    let cat = Object.create(catMethods);
-    // Object.prototype = 
+function createCat(location,numberOfLegs,name,colorOfEyes){
+    let cat = createAnimal(location,numberOfLegs)
+    Object.setPrototypeOf(cat,catMethods)
     cat.name = name;
     cat.colorOfEyes = colorOfEyes;
     return cat;
@@ -69,6 +70,6 @@ let catMethods = {
 Object.setPrototypeOf(dogMethods,animalMethods);
 Object.setPrototypeOf(catMethods,animalMethods)
 // Object.getPrototypeOf()
-let lion = animal("Satara",4);
-let pochi = createDog("Pochi","black and borwn")
-let meow = createCat("Meow","brown")
+let lion = createAnimal("Satara",4);
+let pochi = createDog("India",4,"Pochi","black and borwn");
+let meow = createCat("India",4,"Meow","brown");
