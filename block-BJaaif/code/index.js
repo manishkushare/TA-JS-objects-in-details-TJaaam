@@ -160,8 +160,8 @@ function userFactory(name, score) {
   return user;
 }
 
-var adminFunctionStore = {};
-Object.setPrototypeOf(adminFunctionStore,userFunctionStore);
+var adminFunctionStore = Object.create(userFunctionStore);git
+// Object.setPrototypeOf(adminFunctionStore,userFunctionStore);
 
 function adminFactory(name, score) {
   // Put code here
