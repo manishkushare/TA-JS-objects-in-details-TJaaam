@@ -7,7 +7,7 @@
 Array.prototype.myMap = function(cb){
   let final = [];
   for(let i=0; i < this.length;i++){
-    final.push(cb(this[i]));
+    final.push(cb(this[i],i,this));
   }
   return final
 }
@@ -38,7 +38,7 @@ After adding the function test it using the code below.
 Array.prototype.myFilter = function(cb){
   let final = [];
   for(let i=0;i< this.length; i++){
-    if(cb(this[i])){
+    if(cb(this[i],i,this)){
       final.push(this[i]);
     }
   }
@@ -65,13 +65,17 @@ Make sure it does not the changes the original array.
 */
 
 // You code goes here
+// Array.prototype.shuffle = function(){
+//   // let final = [];
+//   for(let i=this.length-1 ; i> 0; i--){
+//     const j = Math.floor(Math.random()*(i+1));
+//     [this[i],this[j]] = [this[j],this[i]];
+//   }
+//   return this;
+// }
+
 Array.prototype.shuffle = function(){
-  // let final = [];
-  for(let i=this.length-1 ; i> 0; i--){
-    const j = Math.floor(Math.random()*(i+1));
-    [this[i],this[j]] = [this[j],this[i]];
-  }
-  return this;
+  return [...this].sort(()=> Math.random - 0.5);
 }
 // Test to check the shuffle method (It will return different output every time you call)
 console.log(numbers.shuffle());
@@ -130,16 +134,17 @@ chunk will be the remaining elements. `length` should default to 1.
 */
 
 // You code goes here
-// Array.prototype.c = function(l = 1){
-//   let final = [];
-//   for(let i= 0; i< this.length; i+l){
-//     console.log(this.length);
-//     let chunk  = this.slice(i, i+l);
-//     final.push(chunk);
-//   }
-//   return final;
-// }
+Array.prototype.chunk = function(size = 1){
+  let arr = [...this];
+  let len = Math.floor(arr.length/size);
+  let final = [];
+  for(let i=0; i< len; i++){
+    let chunk = arr.splice(0,size);
+    final.push(chunk);
+  }
+  return final;
+}
 // // Test to check the shuffle method (It will return different output every time you call)
-console.log(num.c(2)); // [[1, 2], [3, 4], [2, 3], [6, 7], [7]]
-// console.log(num.chunk()); // [[1], [2], [3], [4], [2], [3], [6], [7], [7]]
-// console.log(strings.chunk(3)); // [['h', 'e', 'l'], ['l', 'o', 'w'], ['o', 'r', 'l'], ['d']]
+console.log(num.chunk(2)); // [[1, 2], [3, 4], [2, 3], [6, 7], [7]]
+console.log(num.chunk()); // [[1], [2], [3], [4], [2], [3], [6], [7], [7]]
+console.log(strings.chunk(3)); // [['h', 'e', 'l'], ['l', 'o', 'w'], ['o', 'r', 'l'], ['d']]
