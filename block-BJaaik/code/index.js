@@ -1,14 +1,3 @@
-## Create Class
-
-Convert the give image into class using inheritance.
-
-- `name` is the property
-- `eat()` is the method
-
-Property ending with `()` is method. And others are properties.
-
-![Inheritance](../assets/inheritance.png)
-```js
 class Person{
     constructor(name,age,gender){
         this.name = name;
@@ -28,28 +17,28 @@ class Person{
 
 
 class Player extends Person{
-    constructor(sportsName){
-        super();
+    constructor(name,age,gender,sportName){
+        super(name,age,gender);
         this.sportName = sportName;
     }
     play(){
-        return `I play ${this.sportName}`;
+        return `I am ${this.name}, I play ${this.sportName}`;
     }
 }
 
 class Teacher extends Person{
-    constructor(instituteName){
-        super()
+    constructor(name,age,gender,instituteName){
+        super(name,age,gender)
         this.instituteName = instituteName;
     }
     teach(){
-        return `I am ${this.name}, I teach at ${this.instituteName} college`
+        return `I am ${this.name}, I teach at ${this.instituteName}.`
     }
 }
 
-class Artist{
-    constructor(kind){
-        super()
+class Artist extends Person{
+    constructor(name,age,gender,kind){
+        super(name,age,gender)
         this.kind = kind;
     }
     createArt(){
@@ -59,8 +48,8 @@ class Artist{
 }
 
 class Cricketer extends Player{
-    constructor(tramName){
-        super()
+    constructor(name,age,gender,sporName,teamName){
+        super(name,age,gender,sporName)
         this.teamName = teamName;
     }
     playCricket(){
@@ -68,8 +57,7 @@ class Cricketer extends Player{
     }
 }
 let person1 = new Person("Manish",25,"Male");
-let player = new Player("Cricket");
-let teacher = new Teacher("AltCampus");
-let artist = new Artist("painting");
-let team = new Cricket("Mumbai Indians")
-```
+let player = new Player("Manish",25,"Male","Cricket");
+let teacher = new Teacher("Manish",25,"Male","AltCampus");
+let artist = new Artist("Manish",25,"Male","painting");
+let team = new Cricketer("Manish",25,"Male","Cricket","Mumbai Indians")
