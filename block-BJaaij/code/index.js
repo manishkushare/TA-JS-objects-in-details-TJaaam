@@ -7,7 +7,7 @@ class Book{
         this.finishedDate = finishedDate;
     }
     markBookAsRead(){
-        this.isRead = true;
+        return this.isRead = true;
         // this.finishedDate = new Date().Date.now 
     }
 }
@@ -22,7 +22,7 @@ class BookList{
         return this.bookArray;
     }
     getCurrentBook(){
-        return this.currentBookIndex;
+        return this.bookArray[this.currentBookIndex];
     }
     getNextBook(){
         return this.bookArray[this.currentBookIndex+1];
@@ -39,4 +39,4 @@ class BookList{
 let book1 = new Book("Rich dad Poor Dad","Motivational and finance", "Robert", false,"5/5/21");
 let book2 = new Book ("The magic of believing", "motivational, mind-science","Bristol",false, "10/5/21");
 
-let bookList = new BookList([book1.title,book2.title]);
+let bookList = new BookList([book1,book2]);
