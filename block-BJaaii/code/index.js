@@ -1,42 +1,11 @@
-## Stack and Queue
-
-To understand how stack and queue works look at the following diagrams.
-
-Stack
-![Stack](../assets/stack.gif)
-
-Queue
-![Queue](../assets/queue.gif)
-
-1. Create a class name `Stack` with the following data and methods. Also implement a `length` getter method.
-
-Data:
-
-- `stack`
-
-Methods:
-
-- `push`: will accept a value and add to the stack. Stack adds data at the end
-- `pop`: will delete the last element (max index) of the stack
-- `peek`: can accept and optional parameter. Will display the element at the given index(passed as argument). If nothing is passed display the last element (last index)
-- `reverse`: will reverse all the elements of the stack and return the reversed stack
-- `isEmpty`: returns `true` if the stack is empty and `false` if the stack has any data.
-- `displayStack`: returns all the data in stack in string format
-
-Getter
-
-- `length`: returns the current length of the stack.
-
-#### Test
-
-```js
 class Stack{
     constructor(){
         this.stack = [];
     }
     push(value){
         // return this.stack[this.stack.length-1] = value;
-        return this.stack.push(value);
+         this.stack.push(value);
+         return this.stack;
          
         
     }
@@ -44,7 +13,7 @@ class Stack{
         // delete this.stack[this.stack.length-1];
         return this.stack.pop();
     }
-    peek(value = this.stack[this.stack.length-1]){
+    peek(value = this.stack.length-1){
         return this.stack[value];
     }
     reverse(){
@@ -84,29 +53,7 @@ console.log(myStack.isEmpty()); // false
 myStack.pop();
 console.log(myStack.isEmpty());
 
-```
 
-2. Create a class name `Queue` with the following data and methods. Also implement a `length` getter method.
-
-Data:
-
-- `queue`
-
-Methods:
-
-- `enqueue`(item): Adds the item at the end of the queue
-- `dequeue`: Removes an item from the top of the queue
-- `peek`: can accept and optional parameter. Will display the element at the given index(passed as argument). If nothing is passed display the first element from top (index 0)
-- `isEmpty`: returns `true` if the stack is empty and `false` if the stack has any data.
-- `displayQueue`: returns all the data in stack in string format
-
-Getter
-
-- `length`: returns the current length of the stack.
-
-#### Test
-
-```js
 class Queue{
     constructor(){
         this.queue = [];
@@ -156,4 +103,3 @@ console.log(atmQueue.isEmpty()); // false
 atmQueue.dequeue();
 atmQueue.dequeue();
 console.log(atmQueue.isEmpty()); // true
-```
