@@ -1,0 +1,20 @@
+*{
+    box-sizing: border-box;
+}
+body{
+font-family: 'Noto Sans JP', sans-serif;
+font-family: 'Orelega One', cursive;
+font-size: 16px;
+}
+
+.container {
+    max-width: 1150px;
+    margin: 0 auto;
+    // position: relative;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
