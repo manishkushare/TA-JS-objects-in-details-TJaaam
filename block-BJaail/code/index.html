@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Book List</title>
+    <script src="https://kit.fontawesome.com/36e351b577.js" defer crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="./assets/stylesheets/main.css">
+    <script src="./assets/main.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container flex">
+            <i class="fas fa-book-open"></i>
+            <h1>My<span>Book</span>List</h1>
+        </div>
+    </header>
+    <main>
+        <div class="hero">
+            <div class="container">
+                <form action="">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" class="title">
+                    <label for="author">Author</label>
+                    <input type="text" id="author" class="author">
+                    <label for="isbn">ISBN#</label>
+                    <input type="text" id="isbn" class="isbn">
+                    <input type="submit" value="Add Now" class="submit">
+                </form>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="column">Is Read</th>
+                            <th scope="column">Title</th>
+                            <th scope="column">Author</th>
+                            <th scope="column">ISBN</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody class="root">
+                        <!-- <tr>
+                            <td class="book_title">The Magic of Thinking big</td>
+                            <td class="author">David J. Schwartz</td>
+                            <td class="isdn">123</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
