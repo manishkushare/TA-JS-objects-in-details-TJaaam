@@ -1,0 +1,25 @@
+.hero{
+    display: flex;
+    flex-direction: column;
+    background-color:cornflowerblue;
+    padding: 2rem 0;
+    border-radius: 2rem;
+    // align-items: center;
+    margin: 2rem 0;
+    // position: relative;
+    width: 100%;
+    height: 15rem;
+
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+// .question{
+//     position: absolute;
+
+// }
+// .question1{
+//     z-index: 2;
+// }
